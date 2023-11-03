@@ -2,7 +2,8 @@ package threads;
 
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
-import View.SnakePanel;
+
+import View.PlayPanels.SnakePanel;
 
 public class Snake extends Thread {
 
@@ -10,6 +11,8 @@ public class Snake extends Thread {
 	boolean advance = true;
 	LinkedList<String> movimientos = new LinkedList<>();
 	String direction="r";
+	int size=0;
+	int velocity;
 
 	public Snake(SnakePanel snake) {
 		this.snake=snake;
@@ -17,6 +20,7 @@ public class Snake extends Thread {
 
 	@Override
 	public void run() {
+		 velocity = 110;
 		while(advance) {			
 			if(movimientos.isEmpty()) {
 				advance=snake.avanzar(direction);
@@ -24,8 +28,14 @@ public class Snake extends Thread {
 				direction=movimientos.removeFirst();
 				advance=snake.avanzar(direction);
 			}
-			try {		
-				Thread.sleep(100);
+			try {	if(110-size != velocity) {
+				velocity=110-size;
+			}
+				if(velocity <= 60) {
+				velocity -=size;
+				}
+				Thread.sleep(velocity);
+
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -59,11 +69,20 @@ public class Snake extends Thread {
 	public boolean isAdvance() {
 		return advance;
 	}
-
 	public void setAdvance(boolean advance) {
 		this.advance = advance;
 	}
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
+	}
+	public int getVelocity() {
+		return velocity;
+	}
+	public void setVelocity(int velocity) {
+		this.velocity = velocity;
+	}
 	
-	
-
 }

@@ -1,18 +1,11 @@
 package threads;
 
-import java.util.LinkedList;
-
-import javax.swing.JOptionPane;
-
-import View.ObjectsPanel;
-import View.SnakePanel;
+import View.PlayPanels.ObjectsPanel;
 
 public class Barriers extends Thread {
 
 	Snake snake;
 	ObjectsPanel ob;
-	
-	
 
 	public Barriers(Snake snake, ObjectsPanel ob) {
 		this.snake=snake;
@@ -21,19 +14,13 @@ public class Barriers extends Thread {
 
 	@Override
 	public void run() {
-		while(snake.advance) {		
+		while(snake.isAlive()) {		
 			ob.generarBarrier();
 			try {		
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
+				Thread.sleep(2000);
+			}catch (InterruptedException e) {
 				e.printStackTrace();
-			}
-			
-			
+			}	
 		}
-		
 	}
-
-
-
 }

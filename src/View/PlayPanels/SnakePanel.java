@@ -1,15 +1,11 @@
-package View;
+package View.PlayPanels;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.ConcurrentModificationException;
 
 import javax.swing.JPanel;
-
-import threads.Snake;
 
 public class SnakePanel extends JPanel{
 
@@ -29,12 +25,10 @@ public class SnakePanel extends JPanel{
 	}
 
 	private void initComponents() {
-		int [] fifhtPart ={3*40,1*40};
-		int [] sixthPart ={4*40,1*40};
-		int [] SevenPart ={5*40,1*40};
-		snakeBody.add(fifhtPart);
-		snakeBody.add(sixthPart);
-		snakeBody.add(SevenPart);
+		int [] secondPart ={4*40,1*40};
+		int [] firstPart ={5*40,1*40};
+		snakeBody.add(secondPart);
+		snakeBody.add(firstPart);
 	}
 
 	//Calcular nueva posicion
@@ -80,7 +74,6 @@ public class SnakePanel extends JPanel{
 		}
 	}
 
-
 	//calcular posicion si se sale del tablero
 	public int[] refactorposicion(int [] posicion,int x, int y) {
 		if(snakeBody.get(snakeBody.size()-1)[0]+x < 0) {
@@ -95,7 +88,6 @@ public class SnakePanel extends JPanel{
 		}	
 		return posicion;
 	}
-
 
 	//Verificar si ha colisionado contra ella o contra la barrera
 	private void colisionVerify() {
@@ -123,74 +115,60 @@ public class SnakePanel extends JPanel{
 		}
 	}
 
-
-
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		for (int[] snake : snakeBody) {
-
-			g.setColor(ColorSnake);
-			g.fillRoundRect(snake [0], snake [1], 40, 40,0, 0);
-			
-			if(snake.equals(snakeBody.get(snakeBody.size()-1))) {
-				g.setColor(Color.WHITE);
-				if((snake[0] == (snakeBody.get(snakeBody.size()-2)[0])-40)||(snake[0] == snakeBody.get(snakeBody.size()-2)[0]+40)) {
-					g.fillRoundRect(snake [0]+10, snake [1], 15, 15,2, 2);
-					g.fillRoundRect(snake [0]+10, snake [1]+25, 15, 15,2, 2);
-				}else {
-					g.fillRoundRect(snake [0], snake [1]+10, 15, 15,2, 2);
-					g.fillRoundRect(snake [0]+25, snake [1]+10, 15, 15,2,2);
+		try {
+			for (int[] snake : snakeBody) {		
+				g.setColor(ColorSnake);
+				g.fillRoundRect(snake [0], snake [1], 40, 40,0, 0);					
+				g.setColor(Color.BLACK);	
+				if(snake.equals(snakeBody.get(snakeBody.size()-1))) {
+					g.setColor(Color.WHITE);
+					if((snake[0] == (snakeBody.get(snakeBody.size()-2)[0])-40)||(snake[0] == snakeBody.get(snakeBody.size()-2)[0]+40)) {
+						g.fillRoundRect(snake [0]+10, snake [1], 15, 15,2, 2);
+						g.fillRoundRect(snake [0]+10, snake [1]+25, 15, 15,2, 2);
+					}else {
+						g.fillRoundRect(snake [0], snake [1]+10, 15, 15,2, 2);
+						g.fillRoundRect(snake [0]+25, snake [1]+10, 15, 15,2,2);
+					}
 				}
 			}
+
+		} catch (ConcurrentModificationException e) {
+			this.repaint();
 		}
+
 	}
 
 	public ArrayList<int[]> getSnakeBody() {
 		return snakeBody;
 	}
-
 	public void setSnakeBody(ArrayList<int[]> snakeBody) {
 		this.snakeBody = snakeBody;
 	}
-
 	public boolean isColision() {
 		return colision;
 	}
-
 	public void setColision(boolean colision) {
 		this.colision = colision;
 	}
-
 	public int[] getBarrier() {
 		return barrier;
 	}
-
 	public void setBarrier(int[] barrier) {
 		this.barrier = barrier;
 	}
-
 	public int[] getFood() {
 		return food;
 	}
-
 	public void setFood(int[] food) {
 		this.food = food;
 	}
-
 	public boolean isEat() {
 		return eat;
 	}
-
 	public void setEat(boolean eat) {
 		this.eat = eat;
 	}
-
-
-
-
-
-
-
-
 }

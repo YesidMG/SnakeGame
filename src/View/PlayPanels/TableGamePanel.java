@@ -1,16 +1,17 @@
-package View;
+package View.PlayPanels;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.Iterator;
-
 import javax.swing.JPanel;
 
 public class TableGamePanel extends JPanel{
 
 	Color color1= new Color(170,214,80);
 	Color color2= new Color(162,208,72);
+	
+	Color color3= Color.BLUE;
+	Color color4= Color.white;
 
 	public TableGamePanel(int x, int y, int width, int height) {
 		this.setLayout(null);
@@ -19,7 +20,6 @@ public class TableGamePanel extends JPanel{
 	}
 
 	private void initComponents() {}
-
 
 	@Override
 	protected void paintComponent(Graphics g) {
