@@ -29,7 +29,7 @@ public class MenuPanel extends JPanel{
 	private void initComponents(ActionListener listener)  {
 
 		play = new MenuBoton("PLAY",(int)(this.getWidth()*0.104), (int)(this.getHeight()*0.75), (int)(this.getWidth()*0.386), (int)(this.getHeight()*0.111));
-		play.setActionCommand("play");
+		play.setActionCommand("playMenu");
 		play.addActionListener(listener);
 		this.add(play);
 

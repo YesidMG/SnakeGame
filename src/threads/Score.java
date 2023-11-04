@@ -8,7 +8,7 @@ public class Score extends Thread {
 	Food food;
 	int foodEat=0;
 	int time=0;
-	int score;
+	int score=0;
 	int velocity=200;
 	ScorePanel scorePanel;
 
@@ -35,14 +35,13 @@ public class Score extends Thread {
 					scorePanel.getFoodConsumed().setText(""+foodEat);
 					score += food.getTimeToEat();
 					scorePanel.getScore().setText(""+score);	
-
-
-
-
 				}
 
 			} catch (InterruptedException e) {
 			}
 		}
 	}
+	
+
+	
 }

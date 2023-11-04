@@ -51,7 +51,7 @@ public class ScorePanel extends JPanel{
 		time.setBounds((int)(this.getWidth()*0.15), (int)(this.getHeight()*0.2), (int)(this.getWidth()*0.3), (int)(this.getHeight()*0.25));
 		this.add(time);
 
-		velocity = new JLabel("90");
+		velocity = new JLabel("0");
 		velocity.setFont(new Font("Arial", Font.PLAIN, 24));
 		velocity.setBounds((int)(this.getWidth()*0.2), (int)(this.getHeight()*0.55), (int)(this.getWidth()*0.25), (int)(this.getHeight()*0.25));
 		this.add(velocity);
@@ -65,6 +65,15 @@ public class ScorePanel extends JPanel{
 		score.setFont(new Font("Arial", Font.PLAIN, 24));
 		score.setBounds((int)(this.getWidth()*0.68), (int)(this.getHeight()*0.55), (int)(this.getWidth()*0.25), (int)(this.getHeight()*0.25));
 		this.add(score);
+	}
+
+	public void reStart() {
+		time.setText("0");
+		score.setText("0");
+		velocity.setText("0");
+		foodConsumed.setText("0");
+		this.repaint();
+		this.revalidate();
 	}
 
 	@Override

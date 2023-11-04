@@ -3,10 +3,12 @@ package threads;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
+import View.ControllerFrame.MyFrame;
 import View.PlayPanels.SnakePanel;
 
 public class Snake extends Thread {
 
+	MyFrame frame;
 	SnakePanel snake;
 	boolean advance = true;
 	LinkedList<String> movimientos = new LinkedList<>();
@@ -14,13 +16,14 @@ public class Snake extends Thread {
 	int size=0;
 	int velocity;
 
-	public Snake(SnakePanel snake) {
+	public Snake(SnakePanel snake, MyFrame frame) {
 		this.snake=snake;
+		this.frame = frame;
 	}
 
 	@Override
 	public void run() {
-		 velocity = 110;
+		velocity = 110;
 		while(advance) {			
 			if(movimientos.isEmpty()) {
 				advance=snake.avanzar(direction);
@@ -31,16 +34,16 @@ public class Snake extends Thread {
 			try {	if(110-size != velocity) {
 				velocity=110-size;
 			}
-				if(velocity <= 60) {
+			if(velocity <= 60) {
 				velocity -=size;
-				}
-				Thread.sleep(velocity);
+			}
+			Thread.sleep(velocity);
 
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-		JOptionPane.showMessageDialog(snake, "Game over");
+		frame.showRePlayMenu();
 	}
 
 	public void addNewDirection(String newDirection) {
@@ -66,6 +69,8 @@ public class Snake extends Thread {
 		return action;
 	}
 
+
+
 	public boolean isAdvance() {
 		return advance;
 	}
@@ -84,5 +89,5 @@ public class Snake extends Thread {
 	public void setVelocity(int velocity) {
 		this.velocity = velocity;
 	}
-	
+
 }

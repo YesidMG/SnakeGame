@@ -44,6 +44,8 @@ public class Food extends Thread {
 			}
 		}
 	}
+	
+	
 
 	public int getFoodEat() {
 		return foodEat;

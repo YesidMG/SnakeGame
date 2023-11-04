@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
-
 import javax.swing.JPanel;
 
 public class SnakePanel extends JPanel{
@@ -13,9 +12,8 @@ public class SnakePanel extends JPanel{
 	ArrayList<int[]> snakeBody = new ArrayList<>();
 	int [] barrier= {0,0};
 	int [] food= {0,0};
-	Color color2= new Color(162,208,72);
-	boolean colision =false;
-	boolean eat =true;
+	boolean colision;
+	boolean eat ;
 
 	public SnakePanel(int x, int y, int width, int height) {
 		this.setOpaque(false);
@@ -24,7 +22,10 @@ public class SnakePanel extends JPanel{
 		this.initComponents();
 	}
 
-	private void initComponents() {
+	public void initComponents() {
+		snakeBody = new ArrayList<>();
+		eat =true;
+		colision =false;
 		int [] secondPart ={4*40,1*40};
 		int [] firstPart ={5*40,1*40};
 		snakeBody.add(secondPart);
