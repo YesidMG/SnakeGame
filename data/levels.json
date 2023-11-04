@@ -1,0 +1,20 @@
+[
+  {
+    "level": "easy",
+    "initialVelocity": 180,
+    "timeFood": 7,
+    "timeBarrier": 9
+  },
+  {
+    "level": "medium",
+    "initialVelocity": 140,
+    "timeFood": 4,
+    "timeBarrier": 6
+  },
+  {
+    "level": "advanced",
+    "initialVelocity": 110,
+    "timeFood": 2,
+    "timeBarrier": 3
+  }
+]

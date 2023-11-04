@@ -1,29 +1,36 @@
 package threads;
 
 import java.util.LinkedList;
-import javax.swing.JOptionPane;
-
 import View.ControllerFrame.MyFrame;
 import View.PlayPanels.SnakePanel;
 
 public class Snake extends Thread {
 
-	MyFrame frame;
-	SnakePanel snake;
-	boolean advance = true;
-	LinkedList<String> movimientos = new LinkedList<>();
-	String direction="r";
-	int size=0;
-	int velocity;
+	private MyFrame frame;
+	private SnakePanel snake;
+	private boolean advance;
+	private LinkedList<String> movimientos ;
+	private String direction;
+	private int size;
+	private int initialVelocity;
+	private int advanceVelocity;
 
-	public Snake(SnakePanel snake, MyFrame frame) {
+	public Snake(SnakePanel snake, MyFrame frame,int initialVelocity) {
 		this.snake=snake;
 		this.frame = frame;
+		advance = true;
+		movimientos = new LinkedList<>();
+		direction="r";
+		size=0;
+		this.initialVelocity = initialVelocity;
+		advanceVelocity =initialVelocity;
 	}
 
 	@Override
 	public void run() {
-		velocity = 110;
+		
+		advanceVelocity = initialVelocity;
+		
 		while(advance) {			
 			if(movimientos.isEmpty()) {
 				advance=snake.avanzar(direction);
@@ -31,13 +38,13 @@ public class Snake extends Thread {
 				direction=movimientos.removeFirst();
 				advance=snake.avanzar(direction);
 			}
-			try {	if(110-size != velocity) {
-				velocity=110-size;
+			try {	if(initialVelocity-size != advanceVelocity) {
+				advanceVelocity=initialVelocity-size;
 			}
-			if(velocity <= 60) {
-				velocity -=size;
+			if(advanceVelocity <= (initialVelocity-50)) {
+				advanceVelocity -=size;
 			}
-			Thread.sleep(velocity);
+			Thread.sleep(advanceVelocity);
 
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -83,11 +90,23 @@ public class Snake extends Thread {
 	public void setSize(int size) {
 		this.size = size;
 	}
-	public int getVelocity() {
-		return velocity;
+
+	public int getInitialVelocity() {
+		return initialVelocity;
 	}
-	public void setVelocity(int velocity) {
-		this.velocity = velocity;
+
+	public void setInitialVelocity(int initialVelocity) {
+		this.initialVelocity = initialVelocity;
 	}
+
+	public int getAdvanceVelocity() {
+		return advanceVelocity;
+	}
+
+	public void setAdvanceVelocity(int advanceVelocity) {
+		this.advanceVelocity = advanceVelocity;
+	}
+	
+	
 
 }

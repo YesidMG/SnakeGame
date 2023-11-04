@@ -7,15 +7,14 @@ import javax.swing.JPanel;
 
 public class TableGamePanel extends JPanel{
 
-	Color color1= new Color(170,214,80);
-	Color color2= new Color(162,208,72);
+	private Color color1;
+	private Color color2;
 	
-	Color color3= Color.BLUE;
-	Color color4= Color.white;
-
 	public TableGamePanel(int x, int y, int width, int height) {
 		this.setLayout(null);
 		this.setBounds(x, y, width, height);
+		color1= new Color(170,214,80);
+		color2= new Color(162,208,72);
 		this.initComponents();
 	}
 

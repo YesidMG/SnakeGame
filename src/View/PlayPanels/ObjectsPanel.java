@@ -8,11 +8,11 @@ import javax.swing.JPanel;
 
 public class ObjectsPanel extends JPanel{
 
-	SnakePanel snakebody;
-	Color ColorFood= Color.red;
-	Color Colorbarrier= Color.DARK_GRAY;
-	int [] barrierLocation;
-	int [] foodLocation;
+	private SnakePanel snakebody;
+	private Color ColorFood;
+	private Color Colorbarrier;
+	private int [] barrierLocation;
+	private int [] foodLocation;
 
 
 	public ObjectsPanel(int x, int y, int width, int height, SnakePanel snakebody) {
@@ -20,6 +20,8 @@ public class ObjectsPanel extends JPanel{
 		this.setLayout(null);
 		this.setBounds(x, y, width, height);
 		this.snakebody = snakebody;
+		ColorFood= Color.red;
+		Colorbarrier= Color.DARK_GRAY;
 		this.initComponents();
 	}
 

@@ -8,17 +8,21 @@ import javax.swing.JPanel;
 
 public class SnakePanel extends JPanel{
 
-	Color ColorSnake= new Color(200,0,220);
-	ArrayList<int[]> snakeBody = new ArrayList<>();
-	int [] barrier= {0,0};
-	int [] food= {0,0};
-	boolean colision;
-	boolean eat ;
+	private Color ColorSnake;
+	private ArrayList<int[]> snakeBody ;
+	private int [] barrier;
+	private int [] food;
+	private boolean colision;
+	private boolean eat ;
 
 	public SnakePanel(int x, int y, int width, int height) {
 		this.setOpaque(false);
 		this.setLayout(null);
 		this.setBounds(x, y, width, height);
+		snakeBody = new ArrayList<>();
+		ColorSnake= new Color(200,0,220);
+		barrier= new int[]{0,0};
+		food= new int []{0,0};
 		this.initComponents();
 	}
 
