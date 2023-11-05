@@ -58,12 +58,6 @@ public class ReadFile {
 	}
 
 	public void writeUserHistory()throws  IOException {
-		//		ArrayList<UserHistoryScore> users = new ArrayList<>();
-		//		users.add(new UserHistoryScore("Dana", "easy", 106, "04-November-2023 02:22:55"));
-		//		users.add(new UserHistoryScore("carlos", "medium", 39, "02-November-2023 14:22:50"));
-		//		users.add(new UserHistoryScore("fabio", "advanced", 39, "03-November-2023 08:55:21"));
-		//		users.add(new UserHistoryScore("Danluaa", "easy", 73, "04-November-2023 07:12:05"));
-
 		PrintWriter print = new PrintWriter("data/history.json");
 		GsonBuilder bilder = new GsonBuilder();
 		bilder.setPrettyPrinting();
